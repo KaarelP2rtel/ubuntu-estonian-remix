@@ -44,7 +44,6 @@ export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 32-bit"
 export REMOVE_PACKAGES="activity-log-manager-common python-zeitgeist rhythmbox-plugin-zeitgeist zeitgeist zeitgeist-core zeitgeist-datahub *flashplugin*"
 
 #packages to install when EXTRA is selected:
-#note: pepperflashplugin installs Google Chrome
 export EXTRA_PACKAGES="libdvdcss2 vlc vlc-plugin-zvbi mplayer mplayer-fonts smplayer smtube smplayer-themes smplayer-l10n cups-pdf gimp gimp-data-extras inkscape chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra adobe-flashplugin xournal ffmpeg mc pavucontrol radiotray python-xdg openjdk-8-jre icedtea-8-plugin"
 #EXTRA includes some stuff for kids also:
 export KIDS_PACKAGES="tuxpaint tuxpaint-config tuxpaint-plugins-default tuxtype childsplay childsplay-alphabet-sounds-en-gb gcompris gcompris-sound-en"
