@@ -44,12 +44,12 @@ export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 32-bit"
 export REMOVE_PACKAGES="activity-log-manager-common python-zeitgeist rhythmbox-plugin-zeitgeist zeitgeist zeitgeist-core zeitgeist-datahub *flashplugin*"
 
 #packages to install when EXTRA is selected:
-export EXTRA_PACKAGES="libdvdcss2 vlc vlc-plugin-zvbi mplayer mplayer-fonts smplayer smtube smplayer-themes smplayer-l10n cups-pdf gimp gimp-data-extras inkscape chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra adobe-flashplugin xournal ffmpeg mc pavucontrol radiotray python-xdg openjdk-8-jre icedtea-8-plugin synaptic"
+export EXTRA_PACKAGES="libdvdcss2 vlc vlc-plugin-zvbi mplayer mplayer-fonts smplayer smtube smplayer-themes smplayer-l10n cups-pdf gimp gimp-data-extras inkscape chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra adobe-flashplugin xournal ffmpeg mc pavucontrol radiotray python-xdg synaptic"
 #EXTRA includes some stuff for kids also:
 export KIDS_PACKAGES="tuxpaint tuxpaint-config tuxpaint-plugins-default tuxtype childsplay childsplay-alphabet-sounds-en-gb gcompris gcompris-sound-en"
 
 #name for Estonian Speller file in current directory
-export ESTONIAN_SPELLER="oofslinget-addon-estobuntu_4.1-0_all.deb"
+#export ESTONIAN_SPELLER="oofslinget-addon-estobuntu_4.1-0_all.deb"
 
 #------
 #Check environment and make selections
@@ -172,7 +172,7 @@ cp -a squashfs/* edit/
 # sudo mv squashfs-root edit
 # I've not noticed difference in the end result, cp seems faster
 mount --bind /dev/ edit/dev
-cp ${ESTONIAN_SPELLER} edit/tmp/
+#cp ${ESTONIAN_SPELLER} edit/tmp/
 #cp splash.pcx extract-cd/isolinux/splash.pcx
 
 #--------
@@ -287,14 +287,14 @@ ENDSCRIPT
 cat > edit/tmp/libreoffice.sh << ENDSCRIPT
 
 # full system upgrade and newest libreoffice
-add-apt-repository -y ppa:libreoffice/ppa && apt update && apt full-upgrade -y && apt -y install libreoffice libreoffice-help-et libreoffice-l10n-et libreoffice-pdfimport libreoffice-nlpsolver libreoffice-ogltrans libreoffice-report-builder libreoffice-style-galaxy libreoffice-templates libreoffice-systray && apt -y remove libreoffice-style-tango libreoffice-style-breeze && ldconfig && dpkg --configure -a && apt clean
+add-apt-repository -y ppa:libreoffice/ppa && apt update && apt full-upgrade -y && apt -y install libreoffice libreoffice-help-et libreoffice-l10n-et libreoffice-pdfimport libreoffice-ogltrans libreoffice-style-galaxy libreoffice-templates libreoffice-systray && apt -y remove libreoffice-style-tango libreoffice-style-breeze && ldconfig && dpkg --configure -a && apt clean
 ENDSCRIPT
 
 
 cat > edit/tmp/estonian_packages.sh << ENDSCRIPT
 # Estonian (basic support)
-apt install -y language-pack-et language-pack-et-base language-pack-gnome-et language-pack-gnome-et-base libreoffice-l10n-et firefox-locale-et libreoffice-help-et thunderbird-locale-et libreoffice-java-common
-dpkg -i tmp/${ESTONIAN_SPELLER}
+apt install -y language-pack-et language-pack-et-base language-pack-gnome-et language-pack-gnome-et-base libreoffice-l10n-et firefox-locale-et libreoffice-help-et thunderbird-locale-et
+#dpkg -i tmp/${ESTONIAN_SPELLER}
 ENDSCRIPT
 
 cat > edit/tmp/replace.sh << ENDSCRIPT
