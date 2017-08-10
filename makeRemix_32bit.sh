@@ -49,7 +49,7 @@ export EXTRA_PACKAGES="libdvdcss2 vlc vlc-plugin-zvbi mplayer mplayer-fonts smpl
 export KIDS_PACKAGES="tuxpaint tuxpaint-config tuxpaint-plugins-default tuxtype childsplay childsplay-alphabet-sounds-en-gb gcompris gcompris-sound-en"
 
 #name for Estonian Speller file in current directory
-export ESTONIAN_SPELLER="oofslinget-addon-estobuntu_4.1-0_all.deb"
+export ESTONIAN_SPELLER="oofslinget-addon-estobuntu_4.1-0_32bit.deb"
 
 #------
 #Check environment and make selections
