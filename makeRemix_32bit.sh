@@ -414,16 +414,16 @@ sed -i -e "s/$IMAGE_NAME/$NEWIMAGE_NAME/" extract-cd/README.diskdefines
 sed -i -e "s/$IMAGE_NAME/$NEWIMAGE_NAME/" extract-cd/.disk/info
 
 cd extract-cd
-# Localizing the UEFI boot
-sed -i '6i    loadfont /boot/grub/fonts/unicode.pf2' boot/grub/grub.cfg
-sed -i '7i    set locale_dir=$prefix/locale' boot/grub/grub.cfg
+# Localizing the UEFI boot -> not working in 32-bit
+#sed -i '6i    loadfont /boot/grub/fonts/unicode.pf2' boot/grub/grub.cfg
+#sed -i '7i    set locale_dir=$prefix/locale' boot/grub/grub.cfg
 #sed -i '8i    set lang=et_EE' boot/grub/grub.cfg
-sed -i '9i    insmod gettext' boot/grub/grub.cfg
+#sed -i '9i    insmod gettext' boot/grub/grub.cfg
 #sed -i 's%splash%splash debian-installer/locale=et_EE keyboard-configuration/layoutcode=et console-setup/layoutcode=et%' boot/grub/grub.cfg
-sed -i 's/Try Ubuntu without installing/Proovi ilma paigaldamiseta/' boot/grub/grub.cfg
-sed -i 's/Install Ubuntu/Paigalda Ubuntu/' boot/grub/grub.cfg
-sed -i 's/OEM install (for manufacturers)/OEM-paigaldus (arvutitootjatele)/' boot/grub/grub.cfg
-sed -i 's/Check disc for defects/Kontrolli kettavigu/' boot/grub/grub.cfg
+#sed -i 's/Try Ubuntu without installing/Proovi ilma paigaldamiseta/' boot/grub/grub.cfg
+#sed -i 's/Install Ubuntu/Paigalda Ubuntu/' boot/grub/grub.cfg
+#sed -i 's/OEM install (for manufacturers)/OEM-paigaldus (arvutitootjatele)/' boot/grub/grub.cfg
+#sed -i 's/Check disc for defects/Kontrolli kettavigu/' boot/grub/grub.cfg
 
 #This is not a good solution, it mixes keyboard setting completely - set language form install splash
 #sed -i 's%splash%splash debian-installer/locale=et_EE.UTF-8 keyboard-configuration/layoutcode=et console-setup/layoutcode=et%' boot/grub/loopback.cfg
