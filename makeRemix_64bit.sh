@@ -36,7 +36,7 @@ export iso_file="ubuntu-16.04.3-desktop-amd64.iso"
 export IMAGE_NAME="Ubuntu Estonian Remix 16.04.3 LTS 64-bit"
 
 #output ISO file
-export output_file="ubuntu-estonian-remix-16.04.3-amd64.iso"
+export output_file="ubuntu-estonian-remix-16.04.3-desktop-amd64.iso"
 
 #visible name of the new disk in file explorer (max 32char)
 export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 64-bit"
