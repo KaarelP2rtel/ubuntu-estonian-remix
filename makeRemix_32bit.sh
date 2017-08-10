@@ -452,7 +452,7 @@ mv -f ../md5sum.txt ./
 sed -i -e '/isolinux/d' md5sum.txt
 # Different volume name than the IMAGE_NAME above.
 # 16.04 LTS
-genisoimage -r -V "$NEWIMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -no-emul-boot -o ${output_file} .
+genisoimage -r -V "$NEWIMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -no-emul-boot -o ${output_file} .
 cd ..
 #isohybrid --uefi ${output_file}
 #
