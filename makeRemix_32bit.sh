@@ -287,7 +287,7 @@ ENDSCRIPT
 cat > edit/tmp/libreoffice.sh << ENDSCRIPT
 
 # full system upgrade and newest libreoffice
-add-apt-repository -y ppa:libreoffice/ppa && apt update && apt full-upgrade -y && apt -y install libreoffice libreoffice-help-et libreoffice-l10n-et libreoffice-pdfimport libreoffice-ogltrans libreoffice-style-galaxy libreoffice-templates libreoffice-systray && apt -y remove libreoffice-style-tango libreoffice-style-breeze && ldconfig && dpkg --configure -a && apt clean
+add-apt-repository -y ppa:libreoffice/ppa && apt update && apt full-upgrade -y && apt -y install libreoffice-help-et libreoffice-l10n-et libreoffice-pdfimport libreoffice-ogltrans libreoffice-style-galaxy libreoffice-templates libreoffice-systray && apt -y remove libreoffice-style-tango libreoffice-style-breeze libreoffice-script-provider-bsh libreoffice-script-provider-js libreoffice-sdbc-hsqldb libreoffice-base && ldconfig && dpkg --configure -a && apt clean
 ENDSCRIPT
 
 
