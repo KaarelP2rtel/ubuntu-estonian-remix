@@ -49,6 +49,7 @@ export EXTRA_PACKAGES="libdvdcss2 vlc vlc-plugin-zvbi mplayer mplayer-fonts smpl
 export KIDS_PACKAGES="tuxpaint tuxpaint-config tuxpaint-plugins-default tuxtype childsplay childsplay-alphabet-sounds-en-gb gcompris gcompris-sound-en"
 
 #name for Estonian Speller file in current directory
+# as either OpenJDK or Oracle Java does not work properly with LibreOffice in 32-bit version then not installed
 #export ESTONIAN_SPELLER="oofslinget-addon-estobuntu_4.1-0_all.deb"
 
 #------
@@ -287,6 +288,7 @@ ENDSCRIPT
 cat > edit/tmp/libreoffice.sh << ENDSCRIPT
 
 # full system upgrade and newest libreoffice
+# unfortunately either OpenJDK or Oracle Java does not work properly and therefore also Java-related components removed from LibreOffice
 add-apt-repository -y ppa:libreoffice/ppa && apt update && apt full-upgrade -y && apt -y install libreoffice-help-et libreoffice-l10n-et libreoffice-pdfimport libreoffice-ogltrans libreoffice-style-galaxy libreoffice-templates libreoffice-systray && apt -y remove libreoffice-style-tango libreoffice-style-breeze libreoffice-script-provider-bsh libreoffice-script-provider-js libreoffice-sdbc-hsqldb libreoffice-base libreoffice-report-builder-bin && ldconfig && dpkg --configure -a && apt clean
 ENDSCRIPT
 
