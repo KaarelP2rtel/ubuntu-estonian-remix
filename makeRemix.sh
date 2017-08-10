@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Ubuntu - Estonian Remix CD 
+# Ubuntu - Estonian Remix ISO
 #
 # based on Finnish remix http://bazaar.launchpad.net/~timo-jyrinki/ubuntu-fi-remix/main/files
 #
@@ -8,6 +8,9 @@
 #------
 # Variables'n'stuff
 #------
+
+#locale
+export LC_ALL=C.UTF-8
 
 #local apt-cacher-ng url
 export proxy_url="http://127.0.0.1:3142"
@@ -22,24 +25,28 @@ export MIRROR="http://ftp.estpak.ee/pub/ubuntu/"
 export RELEASE="xenial"
 
 
-#input ISO file 
-export iso_file="ubuntu-16.04.1-desktop-amd64.iso"
+#input ISO file
+export iso_file="ubuntu-16.04.3-desktop-amd64.iso"
+#
+# ISO download in Estonia
+# http://ftp.aso.ee/ubuntu-releases/
+#
 
 #IMAGE NAME as it apears in ISO file (file <iso_image>)
-export IMAGE_NAME="Ubuntu 16.04 LTS"
+export IMAGE_NAME="Ubuntu Estonian Remix 16.04.3 LTS 64-bit"
 
 #output ISO file
-export output_file="ubuntu-16.04.1-amd64-estremix.iso"
+export output_file="ubuntu-estonian-remix-16.04.3-amd64.iso"
 
 #visible name of the new disk in file explorer (max 32char)
-export NEWIMAGE_NAME="Ubuntu Remix 16.04.1 LTS amd64"
+export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 64-bit"
 
 #packages to remove, primarly privacy leaking packages
-export REMOVE_PACKAGES="activity-log-manager-common python-zeitgeist rhythmbox-plugin-zeitgeist zeitgeist zeitgeist-core zeitgeist-datahub"
+export REMOVE_PACKAGES="activity-log-manager-common python-zeitgeist rhythmbox-plugin-zeitgeist zeitgeist zeitgeist-core zeitgeist-datahub *flashplugin*"
 
 #packages to install when EXTRA is selected:
 #note: pepperflashplugin installs Google Chrome
-export EXTRA_PACKAGES="libdvdcss2 vlc mplayer mplayer-fonts smplayer smtube smplayer-themes smplayer-l10n cups-pdf gimp gimp-data-extras inkscape chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra pepperflashplugin-nonfree xournal ffmpeg mc pavucontrol radiotray python-xdg"
+export EXTRA_PACKAGES="libdvdcss2 vlc vlc-plugin-zvbi mplayer mplayer-fonts smplayer smtube smplayer-themes smplayer-l10n cups-pdf gimp gimp-data-extras inkscape iridium-browser adobe-flashplugin xournal ffmpeg mc pavucontrol radiotray python-xdg openjdk-8-jre icedtea-8-plugin brave"
 #EXTRA includes some stuff for kids also:
 export KIDS_PACKAGES="tuxpaint tuxpaint-config tuxpaint-plugins-default tuxtype childsplay childsplay-alphabet-sounds-en-gb gcompris gcompris-sound-en"
 
@@ -59,7 +66,7 @@ fi
 
 
 if [ ! -f $iso_file ]; then
-  echo No input ISO file. 
+  echo No input ISO file.
   exit
 fi
 
@@ -68,11 +75,11 @@ dialog --title "Ubuntu - Estonian CD remix creation" --msgbox "\nexpecting follo
 
 cmd=(dialog --separate-output --checklist "Select remix options:" 22 76 16)
 options=(ID "Install Estonian ID Software" on    # any option can be set to default to "on"
-         EST "Filosoft speller for LibreOffice and Estonian langpakcs" on
-         LO "Newest LibreOffice software" off
+         EST "Filosoft speller for LibreOffice and Estonian langpacks" on
+         LO "Newest LibreOffice software" on
          REPLACE "Replace desktop system (remove Unity) - select in next step" off
-	 EXTRA "Video players, codecs, Chromium, for kids etc" off
-	 PROXY "Use local apt-cacher-ng proxy" off)
+	 EXTRA "Video players, codecs, Iridium and Brave Browser, for kids etc" on
+	 PROXY "Use local apt-cacher-ng proxy" on)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 for choice in $choices
@@ -149,8 +156,10 @@ fi
 
 
 echo "removing old directories"
+#umount $(mount -t squashfs | cut -d' ' -f1)
+#umount $(mount -t iso9660 | cut -d' ' -f1)
 rm -rf edit/ extract-cd/ mnt/ squashfs/
-echo Extracting image 
+echo Extracting image
 mkdir mnt
 mount -o loop ${iso_file} mnt/
 mkdir extract-cd
@@ -242,7 +251,7 @@ mount -t proc none /proc
 mount -t sysfs none /sys
 mount -t devpts none /dev/pts
 export HOME=/root
-export LC_ALL=C
+export LC_ALL=C.UTF-8
 #needed for some package installation
 service dbus start
 
@@ -258,20 +267,39 @@ deb ${MIRROR} ${RELEASE}-updates multiverse
 deb http://archive.canonical.com/ubuntu ${RELEASE} partner
 deb ${MIRROR} ${RELEASE}-security universe
 deb ${MIRROR} ${RELEASE}-security multiverse
+deb http://download.videolan.org/pub/debian/stable/ / #libdvdcss2
+deb [arch=amd64] https://downloads.iridiumbrowser.de/deb/ stable main #Iridium Browser
+deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt $RELEASE main #Brave Browser
 EOF
+
+#add some additional repositories before updating package list
+#
+# Iridium Browser (based on Chromium, very fast and secure) https://iridiumbrowser.de/downloads/linux.html
+wget -qO - https://downloads.iridiumbrowser.de/ubuntu/iridium-release-sign-01.pub | sudo apt-key add -
+#add-apt-repository "deb [arch=amd64] https://downloads.iridiumbrowser.de/deb/ stable main"
+#
+# Brave Browser https://github.com/brave/browser-laptop/blob/master/docs/linuxInstall.md
+wget -qO - https://s3-us-west-2.amazonaws.com/brave-apt/keys.asc | sudo apt-key add -
+#add-apt-repository "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt $RELEASE main"
+#
+# libdvdcss2 https://www.videolan.org/developers/libdvdcss.html
+wget -qO - http://download.videolan.org/pub/debian/videolan-apt.asc | sudo apt-key add -
+#add-apt-repository "deb http://download.videolan.org/pub/debian/stable/ /"
+#
+# Inkscape https://launchpad.net/~inkscape.dev/+archive/ubuntu/stable
 
 #update package lists
 apt update
 
-#REMOVE some privacy leaking(?) pakcages
+#REMOVE some privacy leaking(?) packages
 apt -y autoremove --purge ${REMOVE_PACKAGES}
 
 ENDSCRIPT
 
 cat > edit/tmp/libreoffice.sh << ENDSCRIPT
 
-#newest libreoffice
-add-apt-repository -y ppa:libreoffice/ppa && apt update && apt -y dist-upgrade && apt -y install libreoffice libreoffice-help-et libreoffice-l10n-et libreoffice-pdfimport libreoffice-nlpsolver libreoffice-ogltrans libreoffice-report-builder libreoffice-style-galaxy libreoffice-templates && apt -y remove libreoffice-style-tango && ldconfig && dpkg --configure -a && apt clean
+# full system upgrade and newest libreoffice
+add-apt-repository -y ppa:libreoffice/ppa && apt update && apt full-upgrade -y && apt -y install libreoffice libreoffice-help-et libreoffice-l10n-et libreoffice-pdfimport libreoffice-nlpsolver libreoffice-ogltrans libreoffice-report-builder libreoffice-style-galaxy libreoffice-templates && apt -y remove libreoffice-style-tango && ldconfig && dpkg --configure -a && apt clean
 ENDSCRIPT
 
 
@@ -288,12 +316,13 @@ apt purge -y unity* compiz* gnome* ubuntuone* accountsservice-*
 #remove some privacy concerned packages
 tasksel install  ${desktop_system}
 echo DONE
-apt -y autoremove
+apt -y autoremove --purge
 
 ENDSCRIPT
 
 cat > edit/tmp/extra.sh << ENDSCRIPT
-#extra packages, like mediaplayer packages, browser and gimp
+#extra packages, like mediaplayer packages, browsers and gimp
+add-apt-repository -y ppa:inkscape.dev/stable && apt update && apt full-upgrade -y
 apt -y install ${EXTRA_PACKAGES}
 
 #fun for kids
@@ -306,10 +335,12 @@ cat > edit/tmp/cleanup.sh << ENDSCRIPT
 echo "" > /etc/resolv.conf
 rm -f /etc/apt/apt.conf.d/00proxy
 apt clean
+apt purge --auto-remove -y
 
 rm -rf /tmp/*
 rm -rf /var/cache/apt-xapian-index/*
 rm -rf /var/lib/apt/lists/*
+rm -rf /home/edmund
 service dbus stop
 sleep 2
 umount /proc/sys/fs/binfmt_misc || true
@@ -334,13 +365,13 @@ then
    echo "Acquire::https { Proxy \"${proxy_url}\"; };" >> edit/etc/apt/apt.conf.d/00proxy
 fi
 
-if [[ $ID ]] 
+if [[ $ID ]]
 then
   chroot edit ./tmp/addID.sh
 fi
 
 if [[ $LO ]]
-then 
+then
   chroot edit ./tmp/libreoffice.sh
 fi
 
@@ -433,11 +464,16 @@ mv -f ../md5sum.txt ./
 sed -i -e '/isolinux/d' md5sum.txt
 # Different volume name than the IMAGE_NAME above.
 # 16.04 LTS
-genisoimage -r -V "$NEWIMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot -o ../${output_file} .
+genisoimage -r -V "$NEWIMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot -o ${output_file} .
 cd ..
 isohybrid --uefi ${output_file}
-umount squashfs/
-umount mnt/
+#
+# Removing building folders
+#umount squashfs/
+#umount mnt/
+umount $(mount -t squashfs | cut -d' ' -f1)
+umount $(mount -t iso9660 | cut -d' ' -f1)
+rm -rf edit/ extract-cd/ mnt/ squashfs/
 
 echo
 echo Generated ${output_file}
