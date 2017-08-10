@@ -321,7 +321,9 @@ ENDSCRIPT
 
 cat > edit/tmp/extra.sh << ENDSCRIPT
 #extra packages, like mediaplayer packages, browsers and gimp
-add-apt-repository -y ppa:inkscape.dev/stable && apt update && apt full-upgrade -y
+add-apt-repository -y ppa:inkscape.dev/stable
+add-apt-repository -y ppa:otto-kesselgulasch/gimp
+apt update && apt full-upgrade -y
 apt -y install ${EXTRA_PACKAGES}
 
 #fun for kids
