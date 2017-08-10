@@ -113,7 +113,7 @@ then
 	  MATE "Mate desktop" off
           GNOME "Gnome desktop" off
           KDE "KDE system" off
-          LXCD "LXCD desktop" off
+          LXDE "LXDE desktop" off
           XFCE "Xfce system" off
           EDU "Edubuntu gnome" off
           STUDIO "Ubuntu studio set" off)
@@ -129,7 +129,7 @@ then
 	KDE)
 	  desktop_system="kubuntu-desktop"
 	  ;;
-	LXCD)
+	LXDE)
 	  desktop_system="lubuntu-desktop"
 	  ;;
 	XFCE)
