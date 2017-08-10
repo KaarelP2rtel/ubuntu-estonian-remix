@@ -25,7 +25,7 @@ export MIRROR="http://ftp.estpak.ee/pub/ubuntu/"
 export RELEASE="xenial"
 
 #input ISO file
-export iso_file="/home/edmund/ISO/ubuntu-16.04.3-desktop-i386.iso"
+export iso_file="ubuntu-16.04.3-desktop-i386.iso"
 #
 # ISO download in Estonia
 # http://ftp.aso.ee/ubuntu-releases/
@@ -35,7 +35,7 @@ export iso_file="/home/edmund/ISO/ubuntu-16.04.3-desktop-i386.iso"
 export IMAGE_NAME="Ubuntu Estonian Remix 16.04.3 LTS 32-bit"
 
 #output ISO file
-export output_file="/home/edmund/linux.itcollege.ee/Ubuntu-Estonian-Remix/ubuntu-estonian-remix-16.04.3-desktop-i386.iso"
+export output_file="ubuntu-estonian-remix-16.04.3-desktop-i386.iso"
 
 #visible name of the new disk in file explorer (max 32char)
 export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 32-bit"
