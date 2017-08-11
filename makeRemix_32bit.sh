@@ -44,16 +44,19 @@ export desktop_name=DEFAULT
 
 #input ISO file
 export iso_file_path="$HOME/ISO"
+#export iso_file_name="ubuntu-16.04.3-desktop-i386"
 export iso_file_name="$(ls $iso_file_path | grep i386 | sed -e 's/\.iso$//')"
 export iso_file_extension="iso"
 export iso_file="$iso_file_path/$iso_file_name.$iso_file_extension"
+#export iso_file="ubuntu-16.04.3-desktop-i386.iso"
 #
 # ISO download in Estonia
 # http://ftp.aso.ee/ubuntu-releases/
 #
 
 #IMAGE NAME as it apears in ISO file (file <iso_image>)
-export IMAGE_NAME="Ubuntu Estonian Remix 16.04.3 LTS 32-bit"
+#export IMAGE_NAME="Ubuntu Estonian Remix 16.04.3 LTS 32-bit"
+export IMAGE_NAME="$(ls $iso_file_path | grep i386 | cut -d'-' -f1)-estonian-remix-$(ls $iso_file_path | grep i386 | cut -d'-' -f2)-32bit"
 
 #output ISO file
 export output_file_path="/var/www/html"
