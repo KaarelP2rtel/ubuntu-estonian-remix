@@ -145,28 +145,28 @@ then
  clear
  case $choice in
 	MATE)
-	  desktop_system="ubuntu-mate-desktop ubuntu-restricted-extras"
+	  desktop_system="ubuntu-mate-desktop"
 	  ;;
 	GNOME)
-	  desktop_system="ubuntu-gnome-desktop ubuntu-restricted-extras"
+	  desktop_system="ubuntu-gnome-desktop"
 	  ;;
 	KDE)
-	  desktop_system="kubuntu-desktop kubuntu-restricted-extras"
+	  desktop_system="kubuntu-desktop"
 	  ;;
 	LXDE)
-	  desktop_system="lubuntu-desktop lubuntu-restricted-extras"
+	  desktop_system="lubuntu-desktop"
 	  ;;
 	XFCE)
-	  desktop_system="xubuntu-desktop xubuntu-restricted-extras"
+	  desktop_system="xubuntu-desktop"
 	  ;;
 	EDU)
-	  desktop_system="edubuntu-desktop-gnome ubuntu-restricted-extras"
+	  desktop_system="edubuntu-desktop-gnome"
 	  ;;
 	STUDIO)
-	  desktop_system="ubuntustudio-desktop ubuntu-restricted-extras"
+	  desktop_system="ubuntustudio-desktop"
 	  ;;
 	*)
-	  desktop_system="ubuntu-restricted-extras"
+	  desktop_system=""
           REPLACE=0
 	  ;;
   esac
