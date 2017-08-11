@@ -26,7 +26,7 @@ export RELEASE="xenial"
 
 # workaround for restricted extras into script extra.sh below: uncomment appropriate one. PART 1 of 2
 ## UNITY
-export desktop_name=DEFAULT
+export desktop_name=UNITY
 ## MATE
 #export desktop_name=MATE
 ## GNOME
@@ -358,7 +358,7 @@ apt -y install ${EXTRA_PACKAGES}
 apt -y install  ${KIDS_PACKAGES}
 
 # workaround for restricted extras into script extra.sh; PART 2 of 2
-if [ "$desktop_name" == "DEFAULT" ]; then
+if [ "$desktop_name" == "UNITY" ]; then
   apt install ubuntu-restricted-extras -y && apt clean
 elif [ "$desktop_name" == "MATE" ]; then
   apt install ubuntu-restricted-extras -y && apt clean
