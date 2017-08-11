@@ -24,6 +24,24 @@ export MIRROR="http://ftp.estpak.ee/pub/ubuntu/"
 #what release we're working on
 export RELEASE="xenial"
 
+# workaround for restricted extras and file naming: uncomment appropriate one
+##UNITY
+export desktop_name=DEFAULT
+## MATE
+#export desktop_name=MATE
+## GNOME
+#export desktop_name=GNOME
+## KDE
+#export desktop_name=KDE
+## LXDE
+#export desktop_name=LXDE
+## XFCE
+#export desktop_name=XFCE
+## Edubuntu
+#export desktop_name=EDU
+## Ubuntu Studio
+#export desktop_name=STUDIO
+
 #input ISO file
 export iso_file_path="$HOME/ISO"
 export iso_file_name="$(ls $iso_file_path | grep i386 | sed -e 's/\.iso$//')"
