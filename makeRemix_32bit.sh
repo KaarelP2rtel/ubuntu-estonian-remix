@@ -55,7 +55,7 @@ export iso_file="$iso_file_path/$iso_file_name.$iso_file_extension"
 #
 
 #IMAGE NAME as it appears in ISO file (file <iso_image>)
-export IMAGE_NAME="$(ls $iso_file_path | grep i386 | cut -d'-' -f1)-estonian-remix-$(ls $iso_file_path | grep i386 | cut -d'-' -f2)-32bit"
+export IMAGE_NAME="$(ls $iso_file_path | grep i386 | cut -d'-' -f1)-estonian-remix-$(ls $iso_file_path | grep i386 | cut -d'-' -f2)-$desktop_name-32bit"
 #export IMAGE_NAME="Ubuntu Estonian Remix 16.04.3 LTS 32-bit"
 
 #output ISO file
