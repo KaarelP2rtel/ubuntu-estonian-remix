@@ -25,7 +25,10 @@ export MIRROR="http://ftp.estpak.ee/pub/ubuntu/"
 export RELEASE="xenial"
 
 #input ISO file
-export iso_file="ubuntu-16.04.3-desktop-i386.iso"
+export iso_file_path="/home/user/ISO"
+export iso_file_name="ubuntu-16.04.3-desktop-i386"
+export iso_file_extension="iso"
+export iso_file="$iso_file_path/$iso_file_name.$iso_file_extension"
 #
 # ISO download in Estonia
 # http://ftp.aso.ee/ubuntu-releases/
@@ -35,7 +38,10 @@ export iso_file="ubuntu-16.04.3-desktop-i386.iso"
 export IMAGE_NAME="Ubuntu Estonian Remix 16.04.3 LTS 32-bit"
 
 #output ISO file
-export output_file="ubuntu-estonian-remix-16.04.3-desktop-i386.iso"
+export output_file_path="/var/www/html
+export output_file_name="ubuntu-estonian-remix-16.04.3-desktop-i386"
+export output_file_extension="iso"
+export output_file="$output_file_path/$output_file_name.$output_file_extension"
 
 #visible name of the new disk in file explorer (max 32char)
 export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 32-bit"
@@ -466,6 +472,9 @@ cd ..
 umount $(mount -t squashfs | cut -d' ' -f1)
 umount $(mount -t iso9660 | cut -d' ' -f1)
 rm -rf edit/ extract-cd/ mnt/ squashfs/
+#
+# Generate SHA256SUM checksum
+sha256sum $output_file_path/$output_file_name.$output_file_extension > $output_file_path/$output_file_name.sha256
 
 echo
 echo Generated ${output_file}
