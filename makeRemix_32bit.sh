@@ -24,8 +24,8 @@ export MIRROR="http://ftp.estpak.ee/pub/ubuntu/"
 #what release we're working on
 export RELEASE="xenial"
 
-# workaround for restricted extras and file naming: uncomment appropriate one
-##UNITY
+# workaround for restricted extras and file naming: uncomment appropriate one. PART 1 of 2
+## UNITY
 export desktop_name=DEFAULT
 ## MATE
 #export desktop_name=MATE
