@@ -66,7 +66,8 @@ export output_file_extension="iso"
 export output_file="$output_file_path/$output_file_name.$output_file_extension"
 
 #visible name of the new disk in file explorer (max 32char)
-export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 32-bit"
+export NEWIMAGE_NAME="$(ls $iso_file_path | grep i386 | cut -d'-' -f1)-remix-$(ls $iso_file_path | grep i386 | cut -d'-' -f2)-lts-32bit"
+#export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 32-bit"
 
 #packages to remove, primarly privacy leaking packages
 export REMOVE_PACKAGES="activity-log-manager-common python-zeitgeist rhythmbox-plugin-zeitgeist zeitgeist zeitgeist-core zeitgeist-datahub *flashplugin*"
