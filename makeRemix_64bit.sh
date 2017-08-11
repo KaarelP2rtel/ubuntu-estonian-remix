@@ -24,6 +24,23 @@ export MIRROR="http://ftp.estpak.ee/pub/ubuntu/"
 #what release we're working on
 export RELEASE="xenial"
 
+# workaround for restricted extras into script extra.sh below: uncomment appropriate one. PART 1 of 2
+## UNITY
+export desktop_name=DEFAULT
+## MATE
+#export desktop_name=MATE
+## GNOME
+#export desktop_name=GNOME
+## KDE
+#export desktop_name=KDE
+## LXDE
+#export desktop_name=LXDE
+## XFCE
+#export desktop_name=XFCE
+## Edubuntu
+#export desktop_name=EDU
+## Ubuntu Studio
+#export desktop_name=STUDIO
 
 #input ISO file
 export iso_file_path="$HOME/ISO"
@@ -334,6 +351,27 @@ apt -y install ${EXTRA_PACKAGES}
 
 #fun for kids
 apt -y install  ${KIDS_PACKAGES}
+
+# workaround for restricted extras into script extra.sh; PART 2 of 2
+if [ "$desktop_name" == "DEFAULT" ]; then
+  apt install ubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "MATE" ]; then
+  apt install ubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "GNOME" ]; then
+  apt install ubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "KDE" ]; then
+  apt install kubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "LXDE" ]; then
+  apt install lubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "XFCE" ]; then
+  apt install xubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "EDU" ]; then
+  apt install ubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "STUDIO" ]; then
+  apt install ubuntu-restricted-extras -y && apt clean
+else
+  echo "You did not choose the desktop environment for restricted extras package installation!"
+fi
 
 ENDSCRIPT
 
