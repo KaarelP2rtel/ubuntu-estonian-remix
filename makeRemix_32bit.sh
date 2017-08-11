@@ -474,7 +474,9 @@ umount $(mount -t iso9660 | cut -d' ' -f1)
 rm -rf edit/ extract-cd/ mnt/ squashfs/
 #
 # Generate SHA256SUM checksum
-sha256sum $output_file_path/$output_file_name.$output_file_extension > $output_file_path/$output_file_name.sha256
+cd $output_file_path
+sha256sum $output_file_name.$output_file_extension > $output_file_name.sha256
+cd -
 
 echo
 echo Generated ${output_file}
