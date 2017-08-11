@@ -25,7 +25,7 @@ export MIRROR="http://ftp.estpak.ee/pub/ubuntu/"
 export RELEASE="xenial"
 
 #input ISO file
-export iso_file_path="/home/user/ISO"
+export iso_file_path="$HOME/ISO"
 export iso_file_name="ubuntu-16.04.3-desktop-i386"
 export iso_file_extension="iso"
 export iso_file="$iso_file_path/$iso_file_name.$iso_file_extension"
