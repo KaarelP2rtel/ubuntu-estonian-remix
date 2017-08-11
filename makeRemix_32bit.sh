@@ -24,7 +24,7 @@ export MIRROR="http://ftp.estpak.ee/pub/ubuntu/"
 #what release we're working on
 export RELEASE="xenial"
 
-# workaround for restricted extras and file naming: uncomment appropriate one. PART 1 of 2
+# workaround for restricted extras into script extra.sh below: uncomment appropriate one. PART 1 of 2
 ## UNITY
 export desktop_name=DEFAULT
 ## MATE
@@ -343,6 +343,27 @@ apt -y install ${EXTRA_PACKAGES}
 
 #fun for kids
 apt -y install  ${KIDS_PACKAGES}
+
+# workaround for restricted extras into script extra.sh; PART 2 of 2
+if [ "$desktop_name" == "DEFAULT" ]; then
+  apt update && apt install ubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "MATE" ]; then
+  apt update && apt install ubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "GNOME" ]; then
+  apt update && apt install ubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "KDE" ]; then
+  apt update && apt install kubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "LXDE" ]; then
+  apt update && apt install lubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "XFCE" ]; then
+  apt update && apt install xubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "EDU" ]; then
+  apt update && apt install ubuntu-restricted-extras -y && apt clean
+elif [ "$desktop_name" == "STUDIO" ]; then
+  apt update && apt install ubuntu-restricted-extras -y && apt clean
+else
+  echo "You did not choose the desktop environment for restricted extras package installation!"
+fi
 
 ENDSCRIPT
 
