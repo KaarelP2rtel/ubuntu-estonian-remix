@@ -21,8 +21,8 @@ export NAMESERVER="8.8.8.8"
 #Ubuntu general package mirror
 export MIRROR="http://ftp.estpak.ee/pub/ubuntu/"
 
-#what release we're working on
-export RELEASE="xenial"
+#what release we're working on -> defined below automatically after defining necessary variables
+#export RELEASE="xenial"
 
 # workaround for restricted extras into script extra.sh below: uncomment appropriate one. PART 1 of 2
 ## UNITY
@@ -68,6 +68,25 @@ export output_file="$output_file_path/$output_file_name.$output_file_extension"
 #visible name of the new disk in file explorer (max 32char)
 export NEWIMAGE_NAME="$(ls $iso_file_path | grep amd64 | cut -d'-' -f1)-remix-$(ls $iso_file_path | grep amd64 | cut -d'-' -f2)-lts-64bit"
 #export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 64-bit"
+
+# automatically determine Ubuntu release codename from used file.
+export VERSION="$(ls $iso_file_path | grep amd64 | cut -d'-' -f2)"
+#
+if [[ "$VERSION" == *"14.04"* ]]; then
+  export RELEASE="trusty"
+elif [[ "$VERSION" == *"16.04"* ]]; then
+  export RELEASE="xenial"
+elif [[ "$VERSION" == *"16.10"* ]]; then
+  export RELEASE="yakkety"
+elif [[ "$VERSION" == *"17.04"* ]]; then
+  export RELEASE="zesty"
+elif [[ "$VERSION" == *"17.10"* ]]; then
+  export RELEASE="artful"
+#elif [[ "$VERSION" == *"18.04"* ]]; then
+#  export RELEASE="?????"
+else
+  echo "Check release manually and fix in script." && exit 1
+fi
 
 #packages to remove, primarly privacy leaking packages
 export REMOVE_PACKAGES="activity-log-manager-common python-zeitgeist rhythmbox-plugin-zeitgeist zeitgeist zeitgeist-core zeitgeist-datahub *flashplugin*"
