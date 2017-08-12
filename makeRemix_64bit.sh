@@ -8,7 +8,7 @@
 #
 # CHANGE VARIABLES:
 #  - desktop_name
-#  - iso_file_path
+#  - iso_file_path (default: $HOME/ISO)
 #  - output_file_path
 
 #------
