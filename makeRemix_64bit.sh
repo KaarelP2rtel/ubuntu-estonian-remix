@@ -383,21 +383,21 @@ apt -y install ${EXTRA_PACKAGES}
 apt -y install  ${KIDS_PACKAGES}
 
 # workaround for restricted extras into script extra.sh; PART 2 of 2
-if [ "$desktop_name" == "UNITY" ]; then
+if [ "$desktop_name" = "UNITY" ]; then
   apt install ubuntu-restricted-extras -y && apt clean
-elif [ "$desktop_name" == "MATE" ]; then
+elif [ "$desktop_name" = "MATE" ]; then
   apt install ubuntu-restricted-extras -y && apt clean
-elif [ "$desktop_name" == "GNOME" ]; then
+elif [ "$desktop_name" = "GNOME" ]; then
   apt install ubuntu-restricted-extras -y && apt clean
-elif [ "$desktop_name" == "KDE" ]; then
+elif [ "$desktop_name" = "KDE" ]; then
   apt install kubuntu-restricted-extras -y && apt clean
-elif [ "$desktop_name" == "LXDE" ]; then
+elif [ "$desktop_name" = "LXDE" ]; then
   apt install lubuntu-restricted-extras -y && apt clean
-elif [ "$desktop_name" == "XFCE" ]; then
+elif [ "$desktop_name" = "XFCE" ]; then
   apt install xubuntu-restricted-extras -y && apt clean
-elif [ "$desktop_name" == "EDU" ]; then
+elif [ "$desktop_name" = "EDU" ]; then
   apt install ubuntu-restricted-extras -y && apt clean
-elif [ "$desktop_name" == "STUDIO" ]; then
+elif [ "$desktop_name" = "STUDIO" ]; then
   apt install ubuntu-restricted-extras -y && apt clean
 else
   echo "You did not choose the desktop environment for restricted extras package installation!"
