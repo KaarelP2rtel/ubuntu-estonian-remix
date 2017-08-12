@@ -7,9 +7,9 @@
 
 #
 # CHANGE VARIABLES:
-#  - desktop_name
+#  - desktop_name: uncomment appropriate line, one desktop at a time only
 #  - iso_file_path (default: $HOME/ISO)
-#  - output_file_path
+#  - output_file_path (default: /var/www/html)
 
 #------
 # Variables'n'stuff
