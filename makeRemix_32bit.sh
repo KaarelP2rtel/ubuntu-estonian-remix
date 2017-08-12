@@ -5,6 +5,12 @@
 #
 # License CC-BY-SA 3.0: http://creativecommons.org/licenses/by-sa/3.0/
 
+#
+# CHANGE VARIABLES:
+#  - desktop_name
+#  - iso_file_path
+#  - output_file_path
+
 #------
 # Variables'n'stuff
 #------
