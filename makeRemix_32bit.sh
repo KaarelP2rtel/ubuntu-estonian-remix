@@ -128,7 +128,7 @@ dialog --title "Ubuntu - Estonian CD remix creation" --msgbox "\nexpecting follo
 
 cmd=(dialog --separate-output --checklist "Select remix options:" 22 76 16)
 options=(ID "Install Estonian ID Software" on    # any option can be set to default to "on"
-         EST "Filosoft speller for LibreOffice and Estonian langpacks" on
+         EST "Filosoft speller for LibreOffice and Estonian langpacks" off
          LO "Newest LibreOffice software" on
          REPLACE "Replace desktop system (remove Unity) - select in next step" off
 	 EXTRA "Video players, codecs, Chromium Browser, for kids etc" on
