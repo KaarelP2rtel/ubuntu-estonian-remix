@@ -73,17 +73,17 @@ export NEWIMAGE_NAME="$(ls $iso_file_path | grep i386 | cut -d'-' -f1)-remix-$(l
 export VERSION="$(ls $iso_file_path | grep i386 | cut -d'-' -f2)"
 #
 if [[ "$VERSION" == *"14.04"* ]]; then
-  export RELEASE="trusty" && echo $RELEASE
+  export RELEASE="trusty"
 elif [[ "$VERSION" == *"16.04"* ]]; then
-  export RELEASE="xenial" && echo $RELEASE
+  export RELEASE="xenial"
 elif [[ "$VERSION" == *"16.10"* ]]; then
-  export RELEASE="yakkety" && echo $RELEASE
+  export RELEASE="yakkety"
 elif [[ "$VERSION" == *"17.04"* ]]; then
-  export RELEASE="zesty" && echo $RELEASE
+  export RELEASE="zesty"
 elif [[ "$VERSION" == *"17.10"* ]]; then
-  export RELEASE="artful" && echo $RELEASE
+  export RELEASE="artful"
 #elif [[ "$VERSION" == *"18.04"* ]]; then
-#  export RELEASE="?????" && echo $RELEASE
+#  export RELEASE="?????"
 else
   echo "Check release manually and fix in script." && exit 1
 fi
