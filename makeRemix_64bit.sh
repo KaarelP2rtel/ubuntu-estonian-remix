@@ -98,7 +98,7 @@ fi
 export REMOVE_PACKAGES="activity-log-manager-common python-zeitgeist rhythmbox-plugin-zeitgeist zeitgeist zeitgeist-core zeitgeist-datahub *flashplugin*"
 
 #packages to install when EXTRA is selected:
-export EXTRA_PACKAGES="libdvdcss2 vlc vlc-plugin-zvbi mplayer mplayer-fonts smplayer smtube smplayer-themes smplayer-l10n cups-pdf gimp gimp-data-extras inkscape iridium-browser adobe-flashplugin xournal ffmpeg mc pavucontrol radiotray python-xdg openjdk-8-jre icedtea-8-plugin default-java-plugin brave synaptic"
+export EXTRA_PACKAGES="libdvdcss2 vlc vlc-plugin-zvbi mplayer mplayer-fonts smplayer smtube smplayer-themes smplayer-l10n cups-pdf gimp gimp-data-extras inkscape iridium-browser adobe-flashplugin xournal ffmpeg mc pavucontrol radiotray python-xdg openjdk-8-jre icedtea-8-plugin default-java-plugin brave synaptic shutter libgoo-canvas-perl byobu veracrypt simplescreenrecorder redshift redshift-gtk geoclue-2.0 clipgrab"
 #EXTRA includes some stuff for kids also:
 export KIDS_PACKAGES="tuxpaint tuxpaint-config tuxpaint-plugins-default tuxtype childsplay childsplay-alphabet-sounds-en-gb gcompris gcompris-sound-en"
 
@@ -377,6 +377,11 @@ cat > edit/tmp/extra.sh << ENDSCRIPT
 add-apt-repository -y ppa:inkscape.dev/stable
 add-apt-repository -y ppa:otto-kesselgulasch/gimp
 add-apt-repository -y ppa:rvm/smplayer
+add-apt-repository -y ppa:shutter/ppa
+add-apt-repository -y ppa:unit193/encryption
+add-apt-repository -y ppa:byobu/ppa
+add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
+add-apt-repository -y ppa:clipgrab-team/ppa
 apt update && apt full-upgrade -y
 apt -y install ${EXTRA_PACKAGES}
 
