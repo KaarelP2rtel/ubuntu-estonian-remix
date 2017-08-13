@@ -388,7 +388,7 @@ elif [ "$desktop_name" = "MATE" ]; then
 elif [ "$desktop_name" = "GNOME" ]; then
   echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install ubuntu-restricted-extras -y && apt clean && apt purge *lightdm* libreoffice-style-tango -y
 elif [ "$desktop_name" = "KDE" ]; then
-  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install kubuntu-restricted-extras -y && apt clean
+  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install kubuntu-restricted-extras -y && apt clean && apt purge *lightdm* -y
 elif [ "$desktop_name" = "LXDE" ]; then
   echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install lubuntu-restricted-extras -y && apt clean
 elif [ "$desktop_name" = "XFCE" ]; then
