@@ -65,7 +65,7 @@ export IMAGE_NAME="$(ls $iso_file_path | grep amd64 | cut -d'-' -f1)-estonian-re
 #export IMAGE_NAME="Ubuntu Estonian Remix 16.04.3 LTS 64-bit"
 
 #output ISO file
-export output_file_path="/var/www/html"
+export output_file_path="/var/www/html" # there can create a symlink so that /var/www/html points where you would like to - then you do not need to change it every time
 export output_file_name="$(ls $iso_file_path | grep amd64 | cut -d'-' -f1)-estonian-remix-$(ls $iso_file_path | grep amd64 | cut -d'-' -f2)-$desktop_name-$(ls $iso_file_path | grep amd64 | cut -d'-' -f4 | cut -d'.' -f1)"
 #export output_file_name="ubuntu-estonian-remix-16.04.3-desktop-amd64"
 export output_file_extension="iso"
