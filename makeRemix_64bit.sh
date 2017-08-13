@@ -566,7 +566,7 @@ echo Generated ISO file:
 echo ${output_file}
 echo
 echo Generated SHA256 checksum:
-echo $output_file_path/$output_file_name.sha256
+echo ${output_file_path}/${output_file_name}.sha256
 echo
 echo ALL DONE!
 echo
