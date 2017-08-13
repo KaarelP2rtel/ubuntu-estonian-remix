@@ -376,6 +376,7 @@ cat > edit/tmp/extra.sh << ENDSCRIPT
 #extra packages, like mediaplayer packages, browsers and gimp
 add-apt-repository -y ppa:inkscape.dev/stable
 add-apt-repository -y ppa:otto-kesselgulasch/gimp
+add-apt-repository -y ppa:rvm/smplayer
 apt update && apt full-upgrade -y
 apt -y install ${EXTRA_PACKAGES}
 
