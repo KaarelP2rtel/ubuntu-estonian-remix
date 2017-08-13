@@ -95,7 +95,7 @@ else
 fi
 
 #packages to remove, primarly privacy leaking packages
-export REMOVE_PACKAGES="activity-log-manager-common python-zeitgeist rhythmbox-plugin-zeitgeist zeitgeist zeitgeist-core zeitgeist-datahub *flashplugin*"
+export REMOVE_PACKAGES="activity-log-manager-common python-zeitgeist rhythmbox-plugin-zeitgeist zeitgeist zeitgeist-core zeitgeist-datahub *flashplugin* apport*"
 
 #packages to install when EXTRA is selected:
 export EXTRA_PACKAGES="libdvdcss2 vlc vlc-plugin-zvbi mplayer mplayer-fonts smplayer smtube smplayer-themes smplayer-l10n cups-pdf gimp gimp-data-extras inkscape chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra adobe-flashplugin xournal ffmpeg mc pavucontrol radiotray python-xdg openjdk-8-jre icedtea-8-plugin default-java-plugin synaptic shutter libgoo-canvas-perl byobu veracrypt simplescreenrecorder redshift redshift-gtk geoclue-2.0 clipgrab"
