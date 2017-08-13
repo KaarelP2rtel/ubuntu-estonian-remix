@@ -75,7 +75,7 @@ export output_file="$output_file_path/$output_file_name.$output_file_extension"
 export NEWIMAGE_NAME="$(ls $iso_file_path | grep i386 | cut -d'-' -f1)-remix-$(ls $iso_file_path | grep i386 | cut -d'-' -f2)-lts-32bit"
 #export NEWIMAGE_NAME="Ubuntu Remix 16.04.3 LTS 32-bit"
 
-# automatically determine Ubuntu release codename from used file.
+# automatically determine Ubuntu release codename from input ISO file.
 export VERSION="$(ls $iso_file_path | grep i386 | cut -d'-' -f2)"
 #
 if [[ "$VERSION" == *"14.04"* ]]; then
