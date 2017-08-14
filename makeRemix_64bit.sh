@@ -350,6 +350,46 @@ apt -y autoremove --purge ${REMOVE_PACKAGES}
 
 ENDSCRIPT
 
+cat > edit/tmp/libreoffice.sh << ENDSCRIPT
+
+# full system upgrade and newest libreoffice
+add-apt-repository -y ppa:libreoffice/ppa && apt update && apt full-upgrade -y && apt -y install libreoffice libreoffice-help-et libreoffice-l10n-et libreoffice-pdfimport libreoffice-nlpsolver libreoffice-ogltrans libreoffice-report-builder libreoffice-style-galaxy libreoffice-templates libreoffice-systray && apt -y remove libreoffice-style-tango libreoffice-style-breeze && ldconfig && dpkg --configure -a && apt clean
+ENDSCRIPT
+
+
+cat > edit/tmp/estonian_packages.sh << ENDSCRIPT
+# Estonian (basic support)
+apt install -y language-pack-et language-pack-et-base language-pack-gnome-et language-pack-gnome-et-base libreoffice-l10n-et firefox-locale-et libreoffice-help-et thunderbird-locale-et libreoffice-java-common
+dpkg -i tmp/${ESTONIAN_SPELLER}
+ENDSCRIPT
+
+cat > edit/tmp/replace.sh << ENDSCRIPT
+#remove Unity and accompaning packages
+apt install -y tasksel
+apt purge -y unity* compiz* gnome* ubuntuone* accountsservice-*
+#remove some privacy concerned packages
+tasksel install ${desktop_system}
+echo DONE
+apt -y autoremove --purge
+
+ENDSCRIPT
+
+cat > edit/tmp/extra.sh << ENDSCRIPT
+#extra packages, like mediaplayer packages, browsers and gimp
+add-apt-repository -y ppa:inkscape.dev/stable
+add-apt-repository -y ppa:otto-kesselgulasch/gimp
+add-apt-repository -y ppa:rvm/smplayer
+add-apt-repository -y ppa:shutter/ppa
+add-apt-repository -y ppa:unit193/encryption
+add-apt-repository -y ppa:byobu/ppa
+add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
+add-apt-repository -y ppa:clipgrab-team/ppa
+apt update && apt full-upgrade -y
+apt -y install ${EXTRA_PACKAGES}
+
+#fun for kids
+apt -y install  ${KIDS_PACKAGES}
+
 cat > edit/tmp/caja-qdigidoc.py <<EOF
 # QDigiDoc Caja Extension
 #
@@ -412,46 +452,6 @@ class OpenDigidocExtension(GObject.GObject, Caja.MenuProvider):
         item.connect('activate', self.menu_activate_cb, paths)
         return item,
 EOF
-
-cat > edit/tmp/libreoffice.sh << ENDSCRIPT
-
-# full system upgrade and newest libreoffice
-add-apt-repository -y ppa:libreoffice/ppa && apt update && apt full-upgrade -y && apt -y install libreoffice libreoffice-help-et libreoffice-l10n-et libreoffice-pdfimport libreoffice-nlpsolver libreoffice-ogltrans libreoffice-report-builder libreoffice-style-galaxy libreoffice-templates libreoffice-systray && apt -y remove libreoffice-style-tango libreoffice-style-breeze && ldconfig && dpkg --configure -a && apt clean
-ENDSCRIPT
-
-
-cat > edit/tmp/estonian_packages.sh << ENDSCRIPT
-# Estonian (basic support)
-apt install -y language-pack-et language-pack-et-base language-pack-gnome-et language-pack-gnome-et-base libreoffice-l10n-et firefox-locale-et libreoffice-help-et thunderbird-locale-et libreoffice-java-common
-dpkg -i tmp/${ESTONIAN_SPELLER}
-ENDSCRIPT
-
-cat > edit/tmp/replace.sh << ENDSCRIPT
-#remove Unity and accompaning packages
-apt install -y tasksel
-apt purge -y unity* compiz* gnome* ubuntuone* accountsservice-*
-#remove some privacy concerned packages
-tasksel install ${desktop_system}
-echo DONE
-apt -y autoremove --purge
-
-ENDSCRIPT
-
-cat > edit/tmp/extra.sh << ENDSCRIPT
-#extra packages, like mediaplayer packages, browsers and gimp
-add-apt-repository -y ppa:inkscape.dev/stable
-add-apt-repository -y ppa:otto-kesselgulasch/gimp
-add-apt-repository -y ppa:rvm/smplayer
-add-apt-repository -y ppa:shutter/ppa
-add-apt-repository -y ppa:unit193/encryption
-add-apt-repository -y ppa:byobu/ppa
-add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
-add-apt-repository -y ppa:clipgrab-team/ppa
-apt update && apt full-upgrade -y
-apt -y install ${EXTRA_PACKAGES}
-
-#fun for kids
-apt -y install  ${KIDS_PACKAGES}
 
 # workaround for restricted extras into script extra.sh; PART 2 of 2
 if [ "$desktop_name" = "UNITY" ]; then
