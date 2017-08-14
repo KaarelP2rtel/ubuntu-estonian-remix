@@ -557,9 +557,13 @@ then
   chroot edit ./tmp/extra.sh
 fi
 
-if [ "$desktop_name" = "MATE" ]; then
-  chroot edit ./tmp/caja-qdigidoc.sh
-fi
+#if [ "$desktop_name" = "MATE" ]; then
+#  chroot edit ./tmp/caja-qdigidoc.sh
+#fi
+#
+# current error messages:
+# ./tmp/caja-qdigidoc.sh: line 4: edit/tmp/caja-qdigidoc.py: No such file or directory
+# cp: cannot stat 'edit/tmp/caja-qdigidoc.py': No such file or directory
 
 chroot edit ./tmp/cleanup.sh
 
