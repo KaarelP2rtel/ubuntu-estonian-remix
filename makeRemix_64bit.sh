@@ -233,6 +233,9 @@ cp ${ESTONIAN_SPELLER} edit/tmp/
 #Image modifing scripts
 #--------
 
+cat > edit/tmp/caja-qdigidoc.sh << ENDSCRIPT
+mkdir -p /usr/share/caja-python/extensions/
+
 cat > edit/tmp/caja-qdigidoc.py <<EOF
 #
 # QDigiDoc Caja Extension
@@ -308,6 +311,8 @@ class OpenDigidocExtension(GObject.GObject, Caja.MenuProvider):
         item.connect('activate', self.menu_activate_cb, paths)
         return item,
 EOF
+cp edit/tmp/caja-qdigidoc.py /usr/share/caja-python/extensions/
+ENDSCRIPT
 
 cat > edit/tmp/addID.sh << ENDSCRIPT
 #add ID-card repository GPG key
@@ -470,7 +475,7 @@ apt -y install  ${KIDS_PACKAGES}
 if [ "$desktop_name" = "UNITY" ]; then
   echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install ubuntu-restricted-extras -y && apt clean
 elif [ "$desktop_name" = "MATE" ]; then
-  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install ubuntu-restricted-extras -y && apt clean && mkdir -p /usr/share/caja-python/extensions/ && cp edit/tmp/caja-qdigidoc.py /usr/share/caja-python/extensions/
+  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install ubuntu-restricted-extras -y && apt clean
 elif [ "$desktop_name" = "GNOME" ]; then
   echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install ubuntu-restricted-extras -y && apt clean && apt purge *lightdm* libreoffice-style-tango -y
 elif [ "$desktop_name" = "KDE" ]; then
