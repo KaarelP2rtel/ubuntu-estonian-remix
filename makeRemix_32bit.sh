@@ -341,8 +341,6 @@ apt -y autoremove --purge ${REMOVE_PACKAGES}
 ENDSCRIPT
 
 cat > edit/tmp/caja-qdigidoc.py <<EOF
-# Estonian ID-card plugin for Caja file manager in MATE desktop environment
-#
 # QDigiDoc Caja Extension
 #
 # Copyright (C) 2010  Erkko Kebbinau
