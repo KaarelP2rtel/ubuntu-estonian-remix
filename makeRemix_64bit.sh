@@ -554,6 +554,9 @@ then
   chroot edit ./tmp/extra.sh
 fi
 
+if [ "$desktop_name" = "MATE" ]; then
+  chroot edit ./tmp/caja-qdigidoc.sh
+fi
 
 chroot edit ./tmp/cleanup.sh
 
