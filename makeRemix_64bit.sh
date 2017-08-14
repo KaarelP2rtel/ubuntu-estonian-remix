@@ -290,6 +290,7 @@ K2czbpReKw==
 =aSyh
 -----END PGP PUBLIC KEY BLOCK-----
 EOF
+
 cat >> /etc/apt/sources.list.d/estID.list <<EOF
 deb https://installer.id.ee/media/ubuntu/ ${RELEASE} main
 EOF
@@ -297,6 +298,7 @@ apt update
 #install Estonian ID-card packages
 apt install -y open-eid
 ENDSCRIPT
+
 cat > edit/tmp/prepare.sh << ENDSCRIPT
 #!/bin/bash -e
 mount -t proc none /proc
