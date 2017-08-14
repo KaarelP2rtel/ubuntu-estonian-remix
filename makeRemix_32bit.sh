@@ -415,7 +415,6 @@ class OpenDigidocExtension(GObject.GObject, Caja.MenuProvider):
 
         item.connect('activate', self.menu_activate_cb, paths)
         return item,
-
 EOF
 
 cat > edit/tmp/libreoffice.sh << ENDSCRIPT
