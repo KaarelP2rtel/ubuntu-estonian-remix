@@ -1,4 +1,10 @@
 #!/bin/bash -e
+#
+#debug options
+#set -x
+#logfile=makeRemix_32bit.log 
+#exec > $logfile 2>&1
+#
 # Ubuntu - Estonian Remix ISO
 #
 # based on Finnish remix http://bazaar.launchpad.net/~timo-jyrinki/ubuntu-fi-remix/main/files
