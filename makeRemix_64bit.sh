@@ -395,7 +395,7 @@ apt -y install  ${KIDS_PACKAGES}
 if [ "$desktop_name" = "UNITY" ]; then
   echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install ubuntu-restricted-extras -y && apt clean
 elif [ "$desktop_name" = "MATE" ]; then
-  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install ubuntu-restricted-extras -y && apt clean && sed -e 's/Nautilus/Caja/g' /usr/share/nautilus-python/extensions/nautilus-qdigidoc.py > /usr/share/caja-python/extensions/caja-qdigidoc.py
+  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install ubuntu-restricted-extras -y && apt clean && mkdir -p /usr/share/caja-python/extensions/ && cp caja-qdigidoc.py /usr/share/caja-python/extensions/
 elif [ "$desktop_name" = "GNOME" ]; then
   echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && apt install ubuntu-restricted-extras -y && apt clean && apt purge *lightdm* libreoffice-style-tango -y
 elif [ "$desktop_name" = "KDE" ]; then
