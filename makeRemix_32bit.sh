@@ -340,7 +340,7 @@ apt -y autoremove --purge ${REMOVE_PACKAGES}
 
 ENDSCRIPT
 
-cat > edit/tmp/caja-qdigidoc.py << ENDSCRIPT
+cat > edit/tmp/caja-qdigidoc.py <<EOF
 # Estonian ID-card plugin for Caja file manager in MATE desktop environment
 #
 # QDigiDoc Caja Extension
@@ -416,7 +416,7 @@ class OpenDigidocExtension(GObject.GObject, Caja.MenuProvider):
         item.connect('activate', self.menu_activate_cb, paths)
         return item,
 
-ENDSCRIPT
+EOF
 
 cat > edit/tmp/libreoffice.sh << ENDSCRIPT
 
