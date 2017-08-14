@@ -235,6 +235,7 @@ mount --bind /dev/ edit/dev
 #--------
 
 cat > edit/tmp/caja-qdigidoc.py <<EOF
+#
 # QDigiDoc Caja Extension
 #
 # Copyright (C) 2010  Erkko Kebbinau
