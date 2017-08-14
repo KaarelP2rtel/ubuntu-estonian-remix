@@ -434,7 +434,7 @@ cat > edit/tmp/replace.sh << ENDSCRIPT
 apt install -y tasksel
 apt purge -y unity* compiz* gnome* ubuntuone* accountsservice-*
 #remove some privacy concerned packages
-tasksel install  ${desktop_system}
+tasksel install ${desktop_system}
 echo DONE
 apt -y autoremove --purge
 
