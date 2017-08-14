@@ -105,6 +105,9 @@ export KIDS_PACKAGES="tuxpaint tuxpaint-config tuxpaint-plugins-default tuxtype 
 #name for Estonian Speller file in current directory
 export ESTONIAN_SPELLER="oofslinget-addon-estobuntu_4.1-0_all.deb"
 
+#name for the Estonian ID-card plugin for Caja file manager in MATE desktop environment
+export CAJA_ID_CARD_PLUGIN="caja-qdigidoc.py"
+
 #------
 #Check environment and make selections
 #------
