@@ -235,6 +235,7 @@ mount --bind /dev/ edit/dev
 #--------
 
 cat > edit/tmp/caja-qdigidoc.sh << ENDSCRIPT
+#!/bin/bash
 mkdir -p /usr/share/caja-python/extensions/
 
 cat > edit/tmp/caja-qdigidoc.py <<EOF
@@ -312,7 +313,9 @@ class OpenDigidocExtension(GObject.GObject, Caja.MenuProvider):
         item.connect('activate', self.menu_activate_cb, paths)
         return item,
 EOF
+
 cp edit/tmp/caja-qdigidoc.py /usr/share/caja-python/extensions/
+
 ENDSCRIPT
 
 cat > edit/tmp/addID.sh << ENDSCRIPT
