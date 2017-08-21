@@ -9,3 +9,5 @@ Estonian Remix @ ubuntu 16.04
 - Make selections what to install into remixed environment
 
 More detailed info (in Estonian): https://wiki.itcollege.ee/index.php/Ubuntu_Estonian_Remix
+
+Some testing builds and more information can be found at http://linux.itcollege.ee/Ubuntu-Estonian-Remix/
